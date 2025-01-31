@@ -704,7 +704,7 @@ function ninja.generateProjectCfg(cfg)
 			pch = p.tools.gcc.getpch(cfg)
 			if pch then
 				pch = {
-					input = pch,
+					input = p.workspace.getrelative(cfg.workspace, path.join(cfg.project.location, pch)),
 					placeholder = project.getrelative(cfg.workspace, path.join(cfg.objdir, path.getname(pch))),
 					gch = project.getrelative(cfg.workspace, path.join(cfg.objdir, path.getname(pch) .. ".gch"))
 				}
